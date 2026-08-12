@@ -42,7 +42,7 @@ on:
 jobs:
   build-nodejs:
     name: build nodejs@${{ inputs.nodeVersion }} npm@${{ inputs.npmVersion }}
-    runs-on: ubuntu-latest
+    runs-on: blacksmith-4vcpu-ubuntu-2404
     outputs:
       nodeVersion: ${{ steps.build-nodejs.outputs.nodeVersion }}
     steps:
@@ -147,7 +147,7 @@ jobs:
 
   test-nodejs:
     name: test nodejs
-    runs-on: ubuntu-latest
+    runs-on: blacksmith-4vcpu-ubuntu-2404
     needs:
       - build-nodejs
     steps:
@@ -168,7 +168,7 @@ jobs:
 
   test-npm:
     name: test npm
-    runs-on: ubuntu-latest
+    runs-on: blacksmith-4vcpu-ubuntu-2404
     needs:
       - build-nodejs
     steps:
@@ -239,7 +239,7 @@ jobs:
 
   generate-matrix:
     name: generate matrix
-    runs-on: ubuntu-latest
+    runs-on: blacksmith-4vcpu-ubuntu-2404
     outputs:
       matrix: ${{ steps.generate-matrix.outputs.matrix }}
     steps:
@@ -351,7 +351,7 @@ jobs:
 
   citgm:
     name: citgm - ${{ matrix.package }}@${{ matrix.version }} ${{ matrix.flaky && '(flaky)' || '' }} ${{ matrix.knownFailure && '(known failure)' || '' }}
-    runs-on: ubuntu-latest
+    runs-on: blacksmith-4vcpu-ubuntu-2404
     needs:
       - build-nodejs
       - generate-matrix

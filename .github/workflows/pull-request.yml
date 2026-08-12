@@ -17,7 +17,7 @@ jobs:
   commitlint:
     name: Lint Commits
     if: github.repository_owner == 'npm'
-    runs-on: ubuntu-latest
+    runs-on: blacksmith-4vcpu-ubuntu-2404
     defaults:
       run:
         shell: bash

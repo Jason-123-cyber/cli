@@ -24,7 +24,7 @@ jobs:
   lint:
     name: Lint
     if: github.repository_owner == 'npm'
-    runs-on: ubuntu-latest
+    runs-on: blacksmith-4vcpu-ubuntu-2404
     defaults:
       run:
         shell: bash
@@ -115,7 +115,7 @@ jobs:
   compare-docs:
     name: Compare Docs
     if: github.repository_owner == 'npm' && github.event_name == 'pull_request'
-    runs-on: ubuntu-latest
+    runs-on: blacksmith-4vcpu-ubuntu-2404
     defaults:
       run:
         shell: bash
