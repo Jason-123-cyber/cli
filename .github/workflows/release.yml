@@ -25,7 +25,7 @@ jobs:
       check-id: ${{ steps.create-check.outputs.check-id }}
     name: Release
     if: github.repository_owner == 'npm'
-    runs-on: ubuntu-latest
+    runs-on: blacksmith-4vcpu-ubuntu-2404
     defaults:
       run:
         shell: bash
@@ -101,7 +101,7 @@ jobs:
       check-id: ${{ steps.create-check.outputs.check-id }}
     name: Update - Release
     if: github.repository_owner == 'npm' && needs.release.outputs.pr
-    runs-on: ubuntu-latest
+    runs-on: blacksmith-4vcpu-ubuntu-2404
     defaults:
       run:
         shell: bash
@@ -177,7 +177,7 @@ jobs:
     needs: [ release, update, ci ]
     name: Post CI - Release
     if: github.repository_owner == 'npm' && needs.release.outputs.pr && always()
-    runs-on: ubuntu-latest
+    runs-on: blacksmith-4vcpu-ubuntu-2404
     defaults:
       run:
         shell: bash
@@ -207,7 +207,7 @@ jobs:
       comment-id: ${{ steps.create-comment.outputs.comment-id }}
     name: Post Release - Release
     if: github.repository_owner == 'npm' && needs.release.outputs.releases
-    runs-on: ubuntu-latest
+    runs-on: blacksmith-4vcpu-ubuntu-2404
     defaults:
       run:
         shell: bash
@@ -249,7 +249,7 @@ jobs:
     needs: [ release, release-integration, post-release ]
     name: Post Release Integration - Release
     if: github.repository_owner == 'npm' && needs.release.outputs.releases && always()
-    runs-on: ubuntu-latest
+    runs-on: blacksmith-4vcpu-ubuntu-2404
     defaults:
       run:
         shell: bash
